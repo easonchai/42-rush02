@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/10 16:26:54 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/10 18:49:11 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_atoi(char *str)
 int		ft_strlen(char *str)
 {
 	int count;
-	
+
 	count = 0;
 	while (str[count])
 		count++;
@@ -84,15 +84,15 @@ t_data	get_data(char *str)
 	len = 0;
 	while (str[len] && str[len] != ':' && !is_space(str[len]))
 		len++;
-	key = malloc(sizeof(char) + 1);
+	key = malloc(sizeof(char) * (len + 1));
 	ft_strncpy(key, str, len);
-	while (is_space(str[len]))
+	while (is_space(str[len]) || str[len] == ':')
 		len++;
 	j = 0;
 	while (is_printable(str[len + j]))
 		j++;
-	value = malloc(sizeof(char) + 1);
-	ft_strncpy(value, str + len + 1, j);
+	value = malloc(sizeof(char) * (len + 1));
+	ft_strncpy(value, str + len, j);
 	data.key = key;
 	data.value = value;
 	return (data);

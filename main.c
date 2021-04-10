@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/10 16:26:00 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/10 18:48:24 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int		main(void)
 {
 	t_data data;
 
-	data = get_data("  20  :     twenty");
+	data = get_data("20    :        twenty");
 	printf("%s\n", data.key);
 	printf("%s\n", data.value);
-
 }

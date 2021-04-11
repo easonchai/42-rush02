@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:36:24 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 12:59:27 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_data			*get_arr(void);
 char		    *get_value(t_data *list, char *key);
 void			ft_putstr(char *str);
 char		    *get_value_by_int(t_data *list, int key);
-void			solve_hundreds(t_data *list, char *str);
-void			solve_tens(t_data *list, char *str);
-void			solve_ones(t_data *list, char *str);
+void			solve_hundreds(t_data *list, char *str, int len);
+void			solve_tens(t_data *list, char *str, int len);
+void			solve_ones(t_data *list, char *str, int len);
 int				is_zeros(char *str);
 
 #endif

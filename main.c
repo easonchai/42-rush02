@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 11:08:45 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 13:25:05 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,52 +39,45 @@ char	*get_head(char *str)
 	return (head);
 }
 
-int		get_hundreds(t_data *list, char *str)
+int		get_hundreds(t_data *list, char *str, int len)
 {
-	solve_ones(list, str);
-	ft_putstr(" ");
-	solve_hundreds(list, str);
+	if (str[0] != '0')
+		solve_ones(list, str, len);
+	solve_hundreds(list, str, len);
 	if (!is_zeros(str + 1))
-		ft_putstr(" ");
+		return (1);
 	else
 	{
-		ft_putstr(" ");
 		return (0);
 	}
-	return (1);
 }
 
-int		get_tens(t_data *list, char *str)
+int		get_tens(t_data *list, char *str, int len)
 {
-	solve_tens(list, str);
+	solve_tens(list, str, len);
 	if (str[0] != '1' && !is_zeros(str + 1))
-		ft_putstr(" ");
+		return (1);
 	else
-	{
-		ft_putstr(" ");
 		return (0);
-	}
-	return (1);
 }
 
-void	print_text(t_data *list, char *str)
+void	print_text(t_data *list, char *str, int len)
 {
-	int		len;
+	int		str_len;
 
-	len = ft_strlen(str);
-	if (len == 3)
-		if (!get_hundreds(list, str))
+	str_len = ft_strlen(str);
+	if (str_len == 3)
+		if (!get_hundreds(list, str, len))
 			return ;
-	if (len == 2)
-		if (!get_tens(list, str))
+	if (str_len == 2)
+		if (!get_tens(list, str, len))
 			return ;
-	if (len == 1)
+	if (str_len == 1)
 	{
-		solve_ones(list, str);
-		ft_putstr(" ");
+		solve_ones(list, str, len);
 	}
 	else
-		print_text(list, str + 1);
+		print_text(list, str + 1, len - 1);
 }
 
 char	*print_place(t_data *list, int length)
@@ -104,6 +97,7 @@ char	*print_place(t_data *list, int length)
 	}
 	str[length + 1] = 0;
 	return(get_value(list, str));
+	
 }
 
 int		main(int argc, char *argv[])
@@ -119,26 +113,35 @@ int		main(int argc, char *argv[])
 	trackpos = 0;
 	if (argc == 2)
 	{
-		if (length > 3 && (length % 3 != 0))
+		if (length % 3 != 0)
 		{
-			print_text(list, head);
+			print_text(list, head, length);
 			head = get_head(argv[1] + (length % 3));
 			trackpos += (length % 3);
 			length -= (length % 3);
 			ft_putstr(print_place(list, length));
-			ft_putstr(" ");
+			if (length != 0)
+				ft_putstr(" ");
 		}
 		while (length != 0)
 		{
-			print_text(list, head);
-			trackpos += 3;
-			length -= 3;
-			head = get_head(argv[1] + trackpos);
-			ft_putstr(print_place(list, length));
-			if (length != 0)
-				ft_putstr(" ");
+			if (argv[1][trackpos] == '0' && argv[1][trackpos + 1] == '0' && argv[1][trackpos + 2] == '0')
+			{
+				trackpos += 3;
+				length -= 3;
+				head = get_head(argv[1] + trackpos);
+			}
 			else
-				ft_putstr("\n");
+			{
+				print_text(list, head, length);
+				trackpos += 3;
+				length -= 3;
+				head = get_head(argv[1] + trackpos);
+				ft_putstr(print_place(list, length));
+				if (length != 0)
+					ft_putstr(" ");
+			}
 		}
+		ft_putstr("\n");
 	}
 }

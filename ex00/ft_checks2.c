@@ -6,11 +6,12 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:36:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:32:03 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 19:57:40 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int		is_zeros(char *str)
 {
@@ -48,10 +49,10 @@ int		valid_dict(t_data *list2, t_data *list)
 	int i;
 	int j;
 
-	check = 0;
 	i = 0;
 	while (list[i].key)
 	{
+		check = 0;
 		j = 0;
 		while (list2[j].key)
 		{

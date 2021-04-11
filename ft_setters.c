@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 10:30:15 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:18:10 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 19:26:56 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ void	set_value(t_data *list, char *key, char *value)
 			list[index].value = parsed_value;
 		index++;
 	}
+	free(parsed_key);
+	free(parsed_value);
 	write_file(list);
 }

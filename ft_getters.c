@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 19:11:55 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:08:59 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 09:44:36 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int     get_num_len(int nbr)
+int		get_num_len(int nbr)
 {
 	int		len;
 
@@ -29,7 +29,7 @@ int     get_num_len(int nbr)
 
 char	*ft_itoa(int nbr)
 {
-	char *str;
+	char	*str;
 	long	n;
 	int		i;
 
@@ -47,24 +47,24 @@ char	*ft_itoa(int nbr)
 	return (str);
 }
 
-char    *get_value(t_data *list, char *key)
+char	*get_value(t_data *list, char *key)
 {
-    int index;
+	int index;
 
-    index = 0;
-    while (list[index].key)
-    {
-        if (ft_match(list[index].key, key))
-            return (list[index].value);
-        index++;
-    }
-    return (0);
+	index = 0;
+	while (list[index].key)
+	{
+		if (ft_match(list[index].key, key))
+			return (list[index].value);
+		index++;
+	}
+	return (0);
 }
 
-char    *get_value_by_int(t_data *list, int key)
+char	*get_value_by_int(t_data *list, int key)
 {
-    char    *alpha_key;
+	char	*alpha_key;
 
-    alpha_key = ft_itoa(key);
-    return (get_value(list, alpha_key));
+	alpha_key = ft_itoa(key);
+	return (get_value(list, alpha_key));
 }

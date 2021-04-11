@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_input.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/11 09:42:16 by echai             #+#    #+#             */
+/*   Updated: 2021/04/11 09:42:35 by echai            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -79,11 +91,5 @@ t_data	*get_arr(void)
 	len = get_file_length("numbers.dict");
 	file_str = read_input("numbers.dict", len);
 	t_data_arr = split_lines(file_str, len);
-	// while (t_data_arr->key)
-	// {
-	// 	printf("%s\n", t_data_arr->key);
-	// 	printf("%s\n", t_data_arr->value);
-	// 	t_data_arr++;
-	// }
-	return t_data_arr;
+	return (t_data_arr);
 }

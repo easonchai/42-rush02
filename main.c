@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 13:25:05 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 14:58:01 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		main(int argc, char *argv[])
 	int		trackpos;
 
 	length = ft_strlen(argv[1]);
-	list = get_arr();
+	list = get_arr(path);
 	head = get_head(argv[1]);
 	trackpos = 0;
 	if (argc == 2)

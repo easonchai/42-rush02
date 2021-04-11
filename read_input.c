@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:42:16 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:42:35 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:57:59 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ t_data	*split_lines(char *str, int size)
 	return (t_data_arr);
 }
 
-t_data	*get_arr(void)
+t_data	*get_arr(char *path)
 {
 	int		len;
 	char	*file_str;
 	t_data	*t_data_arr;
 
-	len = get_file_length("numbers.dict");
-	file_str = read_input("numbers.dict", len);
+	len = get_file_length(path);
+	file_str = read_input(path, len);
 	t_data_arr = split_lines(file_str, len);
 	return (t_data_arr);
 }

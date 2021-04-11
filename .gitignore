@@ -1,4 +1,4 @@
-rush-02
-*.o
-*.swp
-a.out
+*/rush-02
+*/*.o
+*/*.swp
+*/a.out

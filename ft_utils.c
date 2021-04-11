@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:32:43 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 19:15:41 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_strclean(char *str)
 	clean_str = malloc((ft_strlen(str) + 1) * sizeof(char));
 	clean_str[0] = '0';
 	while (is_space(str[i]))
+		i++;
+	while (str[i] == '0')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		clean_str[j++] = str[i++];

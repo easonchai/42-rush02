@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_magic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wng <wng@student.42kl.edu.my>              +#+  +:+       +#+        */
+/*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:03:54 by wng               #+#    #+#             */
-/*   Updated: 2021/04/11 18:23:24 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 19:24:13 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		magic2(t_data *list, int pos_len[2], char *input, char *head)
 		pos_len[0] += (pos_len[1] % 3);
 		pos_len[1] -= (pos_len[1] % 3);
 		ft_putstr(print_place(list, pos_len[1]));
+		free(head);
 		if (pos_len[1] != 0)
 			ft_putstr(" ");
 	}
@@ -48,6 +49,7 @@ void		magic2(t_data *list, int pos_len[2], char *input, char *head)
 		pos_len[0] += 3;
 		pos_len[1] -= 3;
 		head = magic3(list, pos_len, input, head);
+		free(head);
 	}
 }
 
@@ -73,5 +75,7 @@ int			magic(t_data *list, char *nbr)
 	}
 	magic2(list, pos_len, input, head);
 	ft_putstr("\n");
+	free(input);
+	free(head);
 	return (1);
 }

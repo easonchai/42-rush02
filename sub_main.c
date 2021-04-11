@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sub_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wng <wng@student.42kl.edu.my>              +#+  +:+       +#+        */
+/*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:05:37 by wng               #+#    #+#             */
-/*   Updated: 2021/04/11 18:05:43 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 19:23:48 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	*print_place(t_data *list, int length)
 {
 	char	*str;
 	int		i;
+	char	*ans;
 
 	if (length == 0)
 		return ("");
@@ -97,5 +98,7 @@ char	*print_place(t_data *list, int length)
 		i++;
 	}
 	str[i] = '\0';
-	return (get_value(list, str));
+	ans = get_value(list, str);
+	free(str);
+	return (ans);
 }

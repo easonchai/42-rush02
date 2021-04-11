@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:34:37 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:08:20 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 17:42:43 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	solve_tens(t_data *list, char *str, int len)
 
 	if (str[0] != '0')
 	{
-		ans = get_value(list, str);
-		if (ans == NULL)
+		if (str[0] == '1')
+			ans = get_value(list, str);
+		else
 		{
 			temp = (str[0] - '0') * 10;
 			ans = get_value_by_int(list, temp);

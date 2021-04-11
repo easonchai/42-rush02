@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:30:57 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:00:20 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	*print_place(t_data *list, int length)
 {
 	char	*str;
 	int		i;
+	char	*ans;
 
 	if (length == 0)
 		return ("");
@@ -97,7 +98,9 @@ char	*print_place(t_data *list, int length)
 		i++;
 	}
 	str[i] = '\0';
-	return (get_value(list, str));
+	ans = get_value(list, str);
+	free(str);
+	return (ans);
 }
 
 int		magic(t_data *list, char *nbr)
@@ -153,7 +156,9 @@ int		magic(t_data *list, char *nbr)
 int		main(int argc, char *argv[])
 {
 	t_data	*list;
+	t_data	*new_list;
 
+	new_list = NULL;
 	list = get_arr("numbers.dict");
 	if (!list)
 	{
@@ -169,6 +174,11 @@ int		main(int argc, char *argv[])
 		magic(list, argv[1]);
 	else
 	{
-		// Get new one
+		new_list = get_arr(argv[1]);
+		magic(new_list, argv[2]);
+		free_list(new_list);
 	}
+	free_list(list);
+	while (1);
+	return (0);
 }

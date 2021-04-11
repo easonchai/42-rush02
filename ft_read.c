@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:42:16 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:42:35 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:53:11 by hyun-zhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	*get_line(char *str, int pos, int len)
 	line = malloc(len);
 	while (str[pos] != '\n')
 		line[i++] = str[pos++];
+	line[i] = 0;
 	return (line);
 }
 
@@ -70,26 +71,30 @@ t_data	*split_lines(char *str, int size)
 	t_data_arr = malloc((size + 1) * sizeof(t_data));
 	while (str[++i])
 	{
-		if (str[i] == '\n')
+		if (len > 0 && str[i] == '\n')
 		{
 			line = get_line(str, i - len, len + 1);
-			t_data_arr[s++] = get_data(line);
-			len = -1;
+			if (!only_colon(line))
+				return (NULL);
+			else
+				t_data_arr[s++] = get_data(line);
+			len = 0;
 		}
-		len++;
+		else if (str[i] != '\n')
+			len++;
 	}
 	t_data_arr[s].key = 0;
 	return (t_data_arr);
 }
 
-t_data	*get_arr(void)
+t_data	*get_arr(char *path)
 {
 	int		len;
 	char	*file_str;
 	t_data	*t_data_arr;
 
-	len = get_file_length("numbers.dict");
-	file_str = read_input("numbers.dict", len);
+	len = get_file_length(path);
+	file_str = read_input(path, len);
 	t_data_arr = split_lines(file_str, len);
 	return (t_data_arr);
 }

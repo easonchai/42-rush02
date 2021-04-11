@@ -6,13 +6,15 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 10:30:15 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 11:23:34 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:38:17 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 int     get_no_space_len(char *str)
 {
@@ -25,15 +27,15 @@ int     get_no_space_len(char *str)
 		index++;
 	while (str[index])
 	{
-		while (str[index] && !is_space(str[index]))
+		while (str[index] && !is_space(str[index]) && str[index] != '\n')
 		{
 			index++;
 			len++;
 		}
-		if (is_space(str[index]))
+		if (str[index] && is_space(str[index]))
 		{
 			len++;
-			while (str[index] && is_space(str[index]))
+			while (str[index] && is_space(str[index]) && str[index] != '\n')
 				index++;
 		}
 	}
@@ -50,22 +52,42 @@ char    *remove_space(char *str)
 	index = 0;
 	offset = 0;
 	len = get_no_space_len(str);
-	final = malloc(sizeof(char) * len);
+	final = malloc(sizeof(char) * len + 1);
 	while (str[index] && is_space(str[index]))
 		index++;
 	while (str[index])
 	{
-		while (str[index] && !is_space(str[index]))
+		while (str[index] && !is_space(str[index]) && str[index] != '\n')
 			final[offset++] = str[index++];
-		if (is_space(str[index]))
+		if (str[index] && is_space(str[index]))
 		{
 			final[offset++] = ' ';
-			while (str[index] && is_space(str[index]))
+			while (str[index] && is_space(str[index]) && str[index] != '\n')
 				index++;
 		}
 	}
 	final[len] = '\0';
 	return (final);
+}
+
+void	write_file(t_data *list)
+{
+	int	file;
+	int	index;
+	int temp;
+
+	index = 0;
+	file = open("numbers.dict", O_WRONLY | O_CREAT | O_TRUNC, 644);
+	while (list[index].key)
+	{
+		temp = ft_strlen(list[index].key);
+		write(file, list[index].key, temp);
+		write(file, ": ", 2);
+		temp = ft_strlen(list[index].value);
+		write(file, list[index].value, temp);
+		write(file, "\n", 1);
+		index++;
+	}
 }
 
 void	set_value(t_data *list, char *key, char *value)
@@ -83,4 +105,5 @@ void	set_value(t_data *list, char *key, char *value)
 			list[index].value = parsed_value;
 		index++;
 	}
+	write_file(list);
 }

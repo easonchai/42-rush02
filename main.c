@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 13:36:10 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:50:53 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		main(int argc, char *argv[])
 	int		trackpos;
 
 	length = ft_strlen(argv[1]);
-	list = get_arr();
+	list = get_arr("numbers.dict");
 	head = get_head(argv[1]);
 	trackpos = 0;
 	if (argc > 3 || argc < 2)
@@ -118,6 +118,11 @@ int		main(int argc, char *argv[])
 	}
 	if (argc == 2)
 	{
+		if (!validate_inputs(argv[1]))
+		{
+			print_error();
+			return (1);
+		}
 		if (length % 3 != 0)
 		{
 			print_text(list, head, length);
@@ -151,12 +156,6 @@ int		main(int argc, char *argv[])
 	}
 	else
 	{
-		set_value(list, argv[1], argv[2]);
-		int index = 0;
-		while (list[index].key)
-		{
-			printf("%s\n", list[index].value);
-			index++;
-		}
+		// Get new one
 	}
 }

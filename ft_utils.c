@@ -6,12 +6,13 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 13:36:02 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:23:28 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int		ft_atoi(char *str)
 {
@@ -40,7 +41,7 @@ int		ft_strlen(char *str)
 	int count;
 
 	count = 0;
-	while (str[count])
+	while (str[count] && str[count] != '\n')
 		count++;
 	return (count);
 }
@@ -50,7 +51,7 @@ char	*ft_strncpy(char *dest, char *src, int len)
 	int index;
 
 	index = 0;
-	while (src[index] && index < len)
+	while (src[index] && index < len && src[index])
 	{
 		dest[index] = src[index];
 		index++;
@@ -82,14 +83,15 @@ t_data	get_data(char *str)
 	t_data	data;
 
 	len = 0;
+	str = remove_space(str);
 	while (str[len] && str[len] != ':' && !is_space(str[len]))
 		len++;
 	key = malloc(sizeof(char) * (len + 1));
 	ft_strncpy(key, str, len);
-	while (is_space(str[len]) || str[len] == ':')
+	while (str[len] && (is_space(str[len]) || str[len] == ':'))
 		len++;
 	j = 0;
-	while (is_printable(str[len + j]))
+	while (is_printable(str[len + j]) && str[len + j] != '\n' && j < ft_strlen(str) - len)
 		j++;
 	value = malloc(sizeof(char) * (len + 1));
 	ft_strncpy(value, str + len, j);

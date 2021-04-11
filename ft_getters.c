@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 19:11:55 by echai             #+#    #+#             */
-/*   Updated: 2021/04/10 23:02:15 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 09:08:59 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_itoa(int nbr)
 	int		i;
 
 	n = nbr;
-	i = len(n);
+	i = get_num_len(n);
 	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	str[i--] = '\0';

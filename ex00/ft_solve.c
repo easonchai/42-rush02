@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:34:37 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:08:29 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 19:38:27 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	solve_hundreds(t_data *list, char *str, int len)
 		ft_putstr(ans);
 		if (len != 1)
 			ft_putstr(" ");
-		free(temp);
+		// free(temp);
 	}
 }
 
@@ -74,5 +74,5 @@ void	solve_ones(t_data *list, char *str, int len)
 	ft_putstr(ans);
 	if (len != 1)
 		ft_putstr(" ");
-	free(temp);
+	// free(temp);
 }

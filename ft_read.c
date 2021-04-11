@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:42:16 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:58:36 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:19:43 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	*get_line(char *str, char end, int pos, int len)
 	{
 		line[i++] = str[pos++];
 	}
+	line[i] = '\0';
 	return (line);
 }
 
@@ -88,6 +89,7 @@ t_data	*split_lines(char *str, int str_len, int size)
 		{
 			line = get_line(str, str[i], i - len, len + 1);
 			t_data_arr[s++] = get_data(line);
+			free(line);
 			len = -1;
 		}
 		len++;
@@ -107,5 +109,6 @@ t_data	*get_arr(char *path)
 	size = get_file_length(path, 1);
 	file_str = read_input(path, len);
 	t_data_arr = split_lines(file_str, len, size);
+	free(file_str);
 	return (t_data_arr);
 }

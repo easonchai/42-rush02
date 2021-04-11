@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:34:29 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:27:28 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,26 @@ t_data	get_data(char *str)
 	int		len;
 	char	*key;
 	char	*value;
+	char *temp;
 	int		j;
 	t_data	data;
 
 	len = 0;
-	str = remove_space(str);
-	while (str[len] && str[len] != ':' && !is_space(str[len]))
+	temp = remove_space(str);
+	while (temp[len] && temp[len] != ':' && !is_space(temp[len]))
 		len++;
 	key = malloc(sizeof(char) * (len + 1));
-	ft_strncpy(key, str, len);
-	while (str[len] && (is_space(str[len]) || str[len] == ':'))
+	ft_strncpy(key, temp, len);
+	while (temp[len] && (is_space(temp[len]) || temp[len] == ':'))
 		len++;
 	j = 0;
-	while (is_printable(str[len + j]) && str[len + j] != '\n' &&
-	j < ft_strlen(str) - len)
+	while (is_printable(temp[len + j]) && temp[len + j] != '\n' &&
+	j < ft_strlen(temp) - len)
 		j++;
 	value = malloc(sizeof(char) * (len + 1));
-	ft_strncpy(value, str + len, j);
+	ft_strncpy(value, temp + len, j);
 	data.key = key;
 	data.value = value;
+	free(temp);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 10:30:15 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:10:42 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:18:10 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*remove_space(char *str)
 	i = 0;
 	offset = 0;
 	len = get_no_space_len(str);
-	final = malloc(sizeof(char) * len + 1);
+	final = malloc(sizeof(char) * (len + 1));
 	while (str[i] && is_space(str[i]))
 		i++;
 	while (str[i])

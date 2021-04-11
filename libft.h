@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:46:29 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:28:45 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,13 @@ char			*ft_strclean(char *str);
 int				valid_dict(t_data *list2, t_data *list);
 void			print_dict_error(void);
 void		    free_list(t_data *list);
+int				magic(t_data *list, char *nbr);
+void			magic2(t_data *list, int pos_len[2], char *input, char *head);
+char			*magic3(t_data *list, int pos_len[2], char *input, char *head);
+char			*get_head(char *str);
+int				get_hundreds(t_data *list, char *str, int len);
+int				get_tens(t_data *list, char *str, int len);
+void			print_text(t_data *list, char *str, int len);
+char			*print_place(t_data *list, int length);
 
 #endif

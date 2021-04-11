@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 19:11:55 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:44:36 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:03:17 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ char	*get_value(t_data *list, char *key)
 char	*get_value_by_int(t_data *list, int key)
 {
 	char	*alpha_key;
+	char	*ans;
 
 	alpha_key = ft_itoa(key);
-	return (get_value(list, alpha_key));
+	ans = get_value(list, alpha_key);
+	free(alpha_key);
+	return (ans);
 }

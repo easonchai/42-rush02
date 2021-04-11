@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 17:45:12 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 17:58:26 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:22:16 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void    free_list(t_data *list)
         free(list[index].value);
         index++;
     }
+    free(list[index].key);
+    free(list[index].value);
     free(list);
 }

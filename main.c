@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 15:56:22 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 17:23:17 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	print_text(t_data *list, char *str, int len)
 
 char	*print_place(t_data *list, int length)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	if (length == 0)
 		return ("");
@@ -97,16 +97,62 @@ char	*print_place(t_data *list, int length)
 		i++;
 	}
 	str[i] = '\0';
-	return(get_value(list, str));
+	return (get_value(list, str));
+}
+
+int		magic(t_data *list, char *nbr)
+{
+	int		length;
+	int		trackpos;
+	char	*input;
+	char	*head;
+	
+	trackpos = 0;
+	if (!validate_inputs(nbr))
+	{
+		print_error();
+		return (1);
+	}
+	input = ft_strclean(nbr);
+	length = ft_strlen(input);
+	head = get_head(input);
+	if (length >= 40)
+	{
+		print_dict_error();
+		return (1);
+	}
+	if (length % 3 != 0)
+	{
+		print_text(list, head, length);
+		head = get_head(input + (length % 3));
+		trackpos += (length % 3);
+		length -= (length % 3);
+		ft_putstr(print_place(list, length));
+		if (length != 0)
+			ft_putstr(" ");
+	}
+	while (length != 0)
+	{
+		trackpos += 3;
+		length -= 3;
+		if (input[trackpos - 3] == '0' && input[trackpos - 2] == '0' && input[trackpos - 1] == '0')
+			head = get_head(input + trackpos);
+		else
+		{
+			print_text(list, head, length + 3);
+			head = get_head(input + trackpos);
+			ft_putstr(print_place(list, length));
+			if (length != 0)
+				ft_putstr(" ");
+		}
+	}
+	ft_putstr("\n");
+	return (1);
 }
 
 int		main(int argc, char *argv[])
 {
 	t_data	*list;
-	char	*head;
-	int		length;
-	int		trackpos;
-	char	*input;
 
 	list = get_arr("numbers.dict");
 	if (!list)
@@ -114,58 +160,13 @@ int		main(int argc, char *argv[])
 		print_dict_error();
 		return (1);
 	}
-	trackpos = 0;
 	if (argc > 3 || argc < 2)
 	{
 		ft_putstr("\033[0;31mError, invalid number of arguments!\033[0m\n");
 		return (1);
 	}
 	if (argc == 2)
-	{
-		if (!validate_inputs(argv[1]))
-		{
-			print_error();
-			return (1);
-		}
-		input = ft_strclean(argv[1]);
-		length = ft_strlen(input);
-		head = get_head(input);
-		if (length >= 40)
-		{
-			print_dict_error();
-			return (1);
-		}
-		if (length % 3 != 0)
-		{
-			print_text(list, head, length);
-			head = get_head(input + (length % 3));
-			trackpos += (length % 3);
-			length -= (length % 3);
-			ft_putstr(print_place(list, length));
-			if (length != 0)
-				ft_putstr(" ");
-		}
-		while (length != 0)
-		{
-			if (input[trackpos] == '0' && input[trackpos + 1] == '0' && input[trackpos + 2] == '0')
-			{
-				trackpos += 3;
-				length -= 3;
-				head = get_head(input + trackpos);
-			}
-			else
-			{
-				print_text(list, head, length);
-				trackpos += 3;
-				length -= 3;
-				head = get_head(input + trackpos);
-				ft_putstr(print_place(list, length));
-				if (length != 0)
-					ft_putstr(" ");
-			}
-		}
-		ft_putstr("\n");
-	}
+		magic(list, argv[1]);
 	else
 	{
 		// Get new one

@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 10:30:15 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:38:17 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 17:10:42 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int     get_no_space_len(char *str)
+int		get_no_space_len(char *str)
 {
 	int		index;
 	int		len;
@@ -42,28 +42,29 @@ int     get_no_space_len(char *str)
 	return (len);
 }
 
-char    *remove_space(char *str)
+char	*remove_space(char *str)
 {
-	int		index;
+	int		i;
 	char	*final;
 	int		len;
 	int		offset;
-	
-	index = 0;
+
+	i = 0;
 	offset = 0;
 	len = get_no_space_len(str);
 	final = malloc(sizeof(char) * len + 1);
-	while (str[index] && is_space(str[index]))
-		index++;
-	while (str[index])
+	while (str[i] && is_space(str[i]))
+		i++;
+	while (str[i])
 	{
-		while (str[index] && !is_space(str[index]) && str[index] != '\n')
-			final[offset++] = str[index++];
-		if (str[index] && is_space(str[index]))
+		while (str[i] && !is_space(str[i]) && str[i] != '\n')
+			final[offset++] = str[i++];
+		if (str[i] && is_space(str[i]))
 		{
 			final[offset++] = ' ';
-			while (str[index] && is_space(str[index]) && str[index] != '\n')
-				index++;
+			while (str[i] && is_space(str[i]) &&
+			str[i] != '\n')
+				i++;
 		}
 	}
 	final[len] = '\0';

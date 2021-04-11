@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:34:37 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 13:22:59 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 17:08:20 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	solve_tens(t_data *list, char *str, int len)
 	else
 		ft_putstr("and ");
 }
-#include <stdio.h>
+
 void	solve_ones(t_data *list, char *str, int len)
 {
 	char	*ans;
@@ -65,7 +65,6 @@ void	solve_ones(t_data *list, char *str, int len)
 	temp = malloc(sizeof(char) * 2);
 	temp[0] = str[0];
 	temp[1] = '\0';
-
 	str--;
 	if (*str >= '1' && *str <= '9' && len == 1)
 		ft_putstr(" ");

@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:56:48 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 17:09:01 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ t_data	get_data(char *str)
 	while (str[len] && (is_space(str[len]) || str[len] == ':'))
 		len++;
 	j = 0;
-	while (is_printable(str[len + j]) && str[len + j] != '\n' && j < ft_strlen(str) - len)
+	while (is_printable(str[len + j]) && str[len + j] != '\n' &&
+	j < ft_strlen(str) - len)
 		j++;
 	value = malloc(sizeof(char) * (len + 1));
 	ft_strncpy(value, str + len, j);

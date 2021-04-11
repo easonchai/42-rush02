@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:36:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 16:01:43 by hyun-zhe         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:32:03 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		only_colon(char *str)
 	return (1);
 }
 
-#include <stdio.h>
 int		valid_dict(t_data *list2, t_data *list)
 {
 	int check;
@@ -56,7 +55,6 @@ int		valid_dict(t_data *list2, t_data *list)
 		j = 0;
 		while (list2[j].key)
 		{
-			printf("%s     %s\n",list[i].key, list2[j].key);
 			if (ft_match(list[i].key, list2[j].key))
 				check = 1;
 			j++;

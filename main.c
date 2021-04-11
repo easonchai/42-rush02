@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:29:36 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:33:09 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int		main(int argc, char *argv[])
 		free_list(new_list);
 	}
 	free_list(list);
-	// while (1);
 	return (0);
 }

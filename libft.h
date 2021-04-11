@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:28:45 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 18:33:42 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int				is_num(char c);
 int				is_alphanum(char c);
 int				is_printable(char c);
 t_data			*get_arr(char *filename);
-char		    *get_value(t_data *list, char *key);
+char			*get_value(t_data *list, char *key);
 void			ft_putstr(char *str);
-char		    *get_value_by_int(t_data *list, int key);
+char			*get_value_by_int(t_data *list, int key);
 void			solve_hundreds(t_data *list, char *str, int len);
 void			solve_tens(t_data *list, char *str, int len);
 void			solve_ones(t_data *list, char *str, int len);
@@ -45,7 +45,7 @@ int				only_colon(char *str);
 char			*ft_strclean(char *str);
 int				valid_dict(t_data *list2, t_data *list);
 void			print_dict_error(void);
-void		    free_list(t_data *list);
+void			free_list(t_data *list);
 int				magic(t_data *list, char *nbr);
 void			magic2(t_data *list, int pos_len[2], char *input, char *head);
 char			*magic3(t_data *list, int pos_len[2], char *input, char *head);

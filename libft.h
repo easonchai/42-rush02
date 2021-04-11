@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 18:22:51 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 18:26:14 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			print_error(void);
 char			*remove_space(char *str);
 int				only_colon(char *str);
 char			*ft_strclean(char *str);
+int				valid_dict(t_data *list2, t_data *list);
 void			print_dict_error(void);
 int				magic(t_data *list, char *nbr);
 void			magic2(t_data *list, int pos_len[2], char *input, char *head);

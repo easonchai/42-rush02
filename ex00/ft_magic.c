@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:03:54 by wng               #+#    #+#             */
-/*   Updated: 2021/04/11 19:40:33 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 19:41:30 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		magic2(t_data *list, int pos_len[2], char *input, char *head)
 		pos_len[0] += (pos_len[1] % 3);
 		pos_len[1] -= (pos_len[1] % 3);
 		ft_putstr(print_place(list, pos_len[1]));
-		// free(head);
 		if (pos_len[1] != 0)
 			ft_putstr(" ");
 	}
@@ -49,7 +48,6 @@ void		magic2(t_data *list, int pos_len[2], char *input, char *head)
 		pos_len[0] += 3;
 		pos_len[1] -= 3;
 		head = magic3(list, pos_len, input, head);
-		// free(head);
 	}
 }
 
@@ -76,6 +74,5 @@ int			magic(t_data *list, char *nbr)
 	magic2(list, pos_len, input, head);
 	ft_putstr("\n");
 	free(input);
-	// free(head);
 	return (1);
 }

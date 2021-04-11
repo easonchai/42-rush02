@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 10:27:54 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 12:55:15 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 15:14:13 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,9 @@ int		validate_inputs(char *str)
 void	print_error(void)
 {
 	ft_putstr("\033[0;31mError\033[0m\n");
+}
+
+void	print_dict_error(void)
+{
+	ft_putstr("\033[0;31mDict Error\033[0m\n");
 }

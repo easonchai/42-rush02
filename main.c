@@ -6,12 +6,13 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 15:00:06 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 15:56:22 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 
 char	*get_head(char *str)
@@ -95,9 +96,8 @@ char	*print_place(t_data *list, int length)
 		str[i] = '0';
 		i++;
 	}
-	str[length + 1] = 0;
+	str[i] = '\0';
 	return(get_value(list, str));
-	
 }
 
 int		main(int argc, char *argv[])
@@ -106,14 +106,18 @@ int		main(int argc, char *argv[])
 	char	*head;
 	int		length;
 	int		trackpos;
+	char	*input;
 
-	length = ft_strlen(argv[1]);
 	list = get_arr("numbers.dict");
-	head = get_head(argv[1]);
+	if (!list)
+	{
+		print_dict_error();
+		return (1);
+	}
 	trackpos = 0;
 	if (argc > 3 || argc < 2)
 	{
-		ft_putstr("Error, invalid number of arguments!");
+		ft_putstr("\033[0;31mError, invalid number of arguments!\033[0m\n");
 		return (1);
 	}
 	if (argc == 2)
@@ -123,10 +127,18 @@ int		main(int argc, char *argv[])
 			print_error();
 			return (1);
 		}
+		input = ft_strclean(argv[1]);
+		length = ft_strlen(input);
+		head = get_head(input);
+		if (length >= 40)
+		{
+			print_dict_error();
+			return (1);
+		}
 		if (length % 3 != 0)
 		{
 			print_text(list, head, length);
-			head = get_head(argv[1] + (length % 3));
+			head = get_head(input + (length % 3));
 			trackpos += (length % 3);
 			length -= (length % 3);
 			ft_putstr(print_place(list, length));
@@ -135,18 +147,18 @@ int		main(int argc, char *argv[])
 		}
 		while (length != 0)
 		{
-			if (argv[1][trackpos] == '0' && argv[1][trackpos + 1] == '0' && argv[1][trackpos + 2] == '0')
+			if (input[trackpos] == '0' && input[trackpos + 1] == '0' && input[trackpos + 2] == '0')
 			{
 				trackpos += 3;
 				length -= 3;
-				head = get_head(argv[1] + trackpos);
+				head = get_head(input + trackpos);
 			}
 			else
 			{
 				print_text(list, head, length);
 				trackpos += 3;
 				length -= 3;
-				head = get_head(argv[1] + trackpos);
+				head = get_head(input + trackpos);
 				ft_putstr(print_place(list, length));
 				if (length != 0)
 					ft_putstr(" ");

@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 18:03:54 by wng               #+#    #+#             */
-/*   Updated: 2021/04/11 20:14:31 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 20:23:49 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ int			magic(t_data *list, char *nbr)
 	}
 	magic2(list, pos_len, input, head);
 	ft_putstr("\n");
-	free(input);
 	return (1);
 }

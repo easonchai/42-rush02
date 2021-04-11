@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:56:41 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 16:03:06 by hyun-zhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void			print_error(void);
 char			*remove_space(char *str);
 int				only_colon(char *str);
 char			*ft_strclean(char *str);
+int				valid_dict(t_data *list2, t_data *list);
 
 #endif

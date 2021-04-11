@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 15:00:06 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 17:15:28 by hyun-zhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		main(int argc, char *argv[])
 
 	length = ft_strlen(argv[1]);
 	list = get_arr("numbers.dict");
+	printf("LAST %s\n", list[40].value);
 	head = get_head(argv[1]);
 	trackpos = 0;
 	if (argc > 3 || argc < 2)

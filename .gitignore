@@ -1,2 +1,4 @@
 rush-02
 *.o
+*.swp
+a.out

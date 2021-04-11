@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:40:19 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 11:08:45 by wng              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		get_hundreds(t_data *list, char *str)
 		ft_putstr(" ");
 	else
 	{
-		ft_putstr("\n");
+		ft_putstr(" ");
 		return (0);
 	}
 	return (1);
@@ -61,7 +61,7 @@ int		get_tens(t_data *list, char *str)
 		ft_putstr(" ");
 	else
 	{
-		ft_putstr("\n");
+		ft_putstr(" ");
 		return (0);
 	}
 	return (1);
@@ -81,21 +81,64 @@ void	print_text(t_data *list, char *str)
 	if (len == 1)
 	{
 		solve_ones(list, str);
-		ft_putstr("\n");
+		ft_putstr(" ");
 	}
 	else
 		print_text(list, str + 1);
+}
+
+char	*print_place(t_data *list, int length)
+{
+	char *str;
+	int i;
+
+	if (length == 0)
+		return ("");
+	i = 1;
+	str = malloc(sizeof(char) * (length + 2));
+	str[0] = '1';
+	while (i <= length)
+	{
+		str[i] = '0';
+		i++;
+	}
+	str[length + 1] = 0;
+	return(get_value(list, str));
 }
 
 int		main(int argc, char *argv[])
 {
 	t_data	*list;
 	char	*head;
+	int		length;
+	int		trackpos;
 
+	length = ft_strlen(argv[1]);
 	list = get_arr();
 	head = get_head(argv[1]);
+	trackpos = 0;
 	if (argc == 2)
 	{
-		print_text(list, head);
+		if (length > 3 && (length % 3 != 0))
+		{
+			print_text(list, head);
+			head = get_head(argv[1] + (length % 3));
+			trackpos += (length % 3);
+			length -= (length % 3);
+			ft_putstr(print_place(list, length));
+			ft_putstr(" ");
+		}
+		while (length != 0)
+		{
+			print_text(list, head);
+			trackpos += 3;
+			length -= 3;
+			head = get_head(argv[1] + trackpos);
+			ft_putstr(print_place(list, length));
+			if (length != 0)
+				ft_putstr(" ");
+			else
+				ft_putstr("\n");
+		}
 	}
 }

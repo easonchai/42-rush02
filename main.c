@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:50:10 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 11:08:45 by wng              ###   ########.fr       */
+/*   Updated: 2021/04/11 11:30:38 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,11 @@ int		main(int argc, char *argv[])
 	list = get_arr();
 	head = get_head(argv[1]);
 	trackpos = 0;
+	if (argc > 3 || argc < 2)
+	{
+		ft_putstr("Error, invalid number of arguments!");
+		return (1);
+	}
 	if (argc == 2)
 	{
 		if (length > 3 && (length % 3 != 0))
@@ -139,6 +144,16 @@ int		main(int argc, char *argv[])
 				ft_putstr(" ");
 			else
 				ft_putstr("\n");
+		}
+	}
+	else
+	{
+		set_value(list, argv[1], argv[2]);
+		int index = 0;
+		while (list[index].key)
+		{
+			printf("%s\n", list[index].value);
+			index++;
 		}
 	}
 }

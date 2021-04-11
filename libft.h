@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 09:36:24 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 11:09:09 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef	struct	s_data
 int				ft_atoi(char *str);
 int				ft_strlen(char *str);
 char			*ft_strncpy(char *dest, char *src, int len);
-int				ft_strcmp(char *s1, char *s2);
 char			**ft_split(char *str, char delim);
 t_data			get_data(char *str);
 int				ft_match(char *s1, char *s2);
@@ -39,5 +38,6 @@ void			solve_hundreds(t_data *list, char *str);
 void			solve_tens(t_data *list, char *str);
 void			solve_ones(t_data *list, char *str);
 int				is_zeros(char *str);
+void			set_value(t_data *list, char *key, char *value);
 
 #endif

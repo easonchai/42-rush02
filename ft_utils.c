@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:20:43 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:23:28 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:56:48 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		ft_atoi(char *str)
+char	*ft_strclean(char *str)
 {
-	int	multiplier;
-	int	value;
-	int	i;
+	int		i;
+	int		j;
+	char	*clean_str;
 
-	value = 0;
 	i = 0;
-	multiplier = 1;
+	j = 0;
+	clean_str = malloc((ft_strlen(str) + 1) * sizeof(char));
 	while (is_space(str[i]))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			multiplier = -1;
-		i++;
-	}
-	while (str[i] >= '0' || str[i] <= '9')
-		value = value * 10 + (str[i++] - '0');
-	return (value * multiplier);
+	while (str[i] >= '0' && str[i] <= '9')
+		clean_str[j++] = str[i++];
+	return (clean_str);
 }
 
 int		ft_strlen(char *str)

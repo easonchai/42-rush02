@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 09:42:16 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:49:59 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:57:18 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,17 @@ t_data	*split_lines(char *str, int size)
 	t_data_arr = malloc((size + 1) * sizeof(t_data));
 	while (str[++i])
 	{
-		if (str[i] == '\n')
+		if (len > 0 && str[i] == '\n')
 		{
 			line = get_line(str, i - len, len + 1);
-			t_data_arr[s++] = get_data(line);
-			len = -1;
+			if (!only_colon(line))
+				return (NULL);
+			else
+				t_data_arr[s++] = get_data(line);
+			len = 0;
 		}
-		len++;
+		else if (str[i] != '\n')
+			len++;
 	}
 	t_data_arr[s].key = 0;
 	return (t_data_arr);

@@ -6,7 +6,7 @@
 /*   By: echai <echai@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:13:29 by echai             #+#    #+#             */
-/*   Updated: 2021/04/11 14:50:11 by echai            ###   ########.fr       */
+/*   Updated: 2021/04/11 14:56:41 by echai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef	struct	s_data
 	char	*value;
 }				t_data;
 
-int				ft_atoi(char *str);
 int				ft_strlen(char *str);
 char			*ft_strncpy(char *dest, char *src, int len);
 char			**ft_split(char *str, char delim);
@@ -42,5 +41,7 @@ void			set_value(t_data *list, char *key, char *value);
 int				validate_inputs(char *str);
 void			print_error(void);
 char			*remove_space(char *str);
+int				only_colon(char *str);
+char			*ft_strclean(char *str);
 
 #endif
